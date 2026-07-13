@@ -19,10 +19,13 @@ jobs:
       - name: 安装 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+
+      - name: 清理 npm 缓存
+        run: npm cache clean --force
 
       - name: 安装依赖
-        run: npm ci
+        run: npm install --verbose
 
       - name: 安装 Playwright 浏览器
         run: npx playwright install --with-deps
